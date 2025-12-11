@@ -1,5 +1,4 @@
 import { Note } from "@/types/note";
-import Link from "next/link";
 import css from "./NotePreview.module.css";
 
 interface NotePreviewProps {
@@ -19,9 +18,6 @@ export default function NotePreview({ note }: NotePreviewProps) {
           <div>Created: {new Date(note.createdAt).toLocaleDateString()}</div>
           <div>Updated: {new Date(note.updatedAt).toLocaleDateString()}</div>
         </div>
-        <Link href="/" className={css.backBtn}>
-          ← Back to notes
-        </Link>
       </div>
     </div>
   );

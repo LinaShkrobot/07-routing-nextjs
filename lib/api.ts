@@ -25,10 +25,10 @@ export async function fetchNotes({
 }: FetchNotesParams = {}): Promise<NotesResponse> {
   const config = {
     params: {
-      search,
-      tag,
+      ...(search && { search }),
+      ...(tag && { tag }),
       page,
-      perPage,
+      ...(perPage && { perPage }),
     },
     headers: {
       Authorization: `Bearer ${TOKEN}`,

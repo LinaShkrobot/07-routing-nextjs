@@ -12,7 +12,7 @@ const SidebarNotes = () => {
         </Link>
       </li>
       {tags.map((tag) => (
-        <li key={tag}>
+        <li key={tag} className={css.menuItem}>
           <Link href={`/notes/filter/${tag}`} className={css.menuLink}>
             {tag}
           </Link>
