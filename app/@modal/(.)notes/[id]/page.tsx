@@ -1,34 +1,11 @@
-"use client";
-import { useRouter } from "next/navigation";
-import Modal from "@/components/Modal/Modal";
-import NotePreview from "@/components/NotePreview/NotePreview";
-import { useQuery } from "@tanstack/react-query";
-import { fetchNoteById } from "@/lib/api";
-import { useParams } from "next/navigation";
+import NotePreviewClient from "./NotePreview.client";
 
-export default function InterceptedNotePage() {
-  const router = useRouter();
-  const { id } = useParams<{ id: string }>();
+type Props = {
+  params: Promise<{ id: string }>;
+};
 
-  const {
-    data: note,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["note", id],
-    queryFn: () => fetchNoteById(id),
-  });
+export default async function InterceptedNotePage({ params }: Props) {
+  const { id } = await params;
 
-  const handleClose = () => {
-    router.back();
-  };
-
-  if (isLoading) return null;
-  if (error || !note) return null;
-
-  return (
-    <Modal onClose={handleClose}>
-      <NotePreview note={note} />
-    </Modal>
-  );
+  return <NotePreviewClient id={id} />;
 }
