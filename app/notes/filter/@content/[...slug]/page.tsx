@@ -7,8 +7,11 @@ type Props = {
 
 const NotesByTag = async ({ params }: Props) => {
   const { slug } = await params;
-  const tag = slug[0] === "all" ? undefined : slug[0];
-  const response = await fetchNotes({ tag });
+  const rawTag = slug[0];
+  const normalizedTag = rawTag === "all"
+    ? undefined
+    : rawTag.charAt(0).toUpperCase() + rawTag.slice(1).toLowerCase();
+  const response = await fetchNotes({ tag: normalizedTag });
 
   return (
     <div>
