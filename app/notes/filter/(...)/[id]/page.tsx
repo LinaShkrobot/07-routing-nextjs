@@ -7,7 +7,6 @@ interface PageProps {
 
 export default async function Page({ params }: PageProps) {
   const { id } = await params;
-  console.log("🔍 Intercepting route - ID:", id);
   const tags = ["all", "Todo", "Work", "Personal", "Meeting", "Shopping"];
   if (tags.includes(id)) {
     return null;
