@@ -15,6 +15,8 @@ export default function InterceptedNote({ note }: InterceptedNoteProps) {
     router.back();
   };
 
+  console.log(11111);
+
   return (
     <Modal onClose={handleClose}>
       <NotePreview note={note} />
