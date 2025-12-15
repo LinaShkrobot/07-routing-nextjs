@@ -29,7 +29,12 @@ function NoteDetails() {
         </div>
         <p className={css.content}>{note?.content}</p>
         <p className={css.date}>
-          Created: {new Date(note?.createdAt || "").toLocaleDateString()}
+          Created: {new Date(note?.createdAt || "").toLocaleDateString('uk-UA', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            timeZone: 'UTC'
+          })}
         </p>
       </div>
     </div>
